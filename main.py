@@ -49,6 +49,15 @@ async def home():
     return HTMLResponse(content=html(css, body))
 
 
+@app.get("/hehe")
+async def hehe():
+    body = """
+    <h1>Hehe</h1>
+    <p>Hehe</p>
+    """
+    return HTMLResponse(content=html(css, body))
+
+
 @app.get("/{short_url}")
 async def redirect_to_original(short_url: str):
 
@@ -61,15 +70,6 @@ async def redirect_to_original(short_url: str):
         """
         content = html(css, body)
         return HTMLResponse(content=content)
-
-
-@app.get("/hehe")
-async def hehe():
-    body = """
-    <h1>Hehe</h1>
-    <p>Hehe</p>
-    """
-    return HTMLResponse(content=html(css, body))
 
 
 if __name__ == "__main__":

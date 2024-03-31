@@ -3,7 +3,6 @@ from starlette.responses import RedirectResponse, HTMLResponse
 import json
 import os
 from jinja2 import Environment, FileSystemLoader
-import tabulate
 
 with open("assets/styles.css", "r") as f:
     css = f.read()
@@ -28,7 +27,10 @@ async def home():
     """
 
     for key, value in url_mappings.items():
-        body += f"<tr><td><a href='/{key}'>{key}</a></td><td>{value[1]}</td></tr>"
+        body += (
+            f"<tr><td><a href='/{key}'>"
+            f"{key}</a></td><td>{value[1]}</td></tr>"
+        )
     body += "</tbody></table>"
 
     content = index_template.render(

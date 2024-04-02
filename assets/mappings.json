@@ -3,6 +3,10 @@
         "http://45.90.13.218:6931/",
         "Your Virtual Assistant Companion! Your reliable virtual assistant designed to simplify your daily tasks and enhance your productivity on the Windows platform. (Windows App currently in development)"
     ],
+    "private-chat": [
+        "http://45.140.188.54:6513/",
+        "A simple and secure chat application that allows you to chat with your friends and family privately."
+    ],
     "portfolio": [
         "/wip",
         "The Personal Portfolio about me."

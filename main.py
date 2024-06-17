@@ -53,10 +53,26 @@ async def hehe():
 
 
 @app.get("/{short_url}")
-async def redirect_to_original(short_url: str):
+async def redirect_domain(short_url: str):
 
     if short_url in url_mappings:
         return RedirectResponse(url=url_mappings[short_url][0])
+    else:
+        body = f"""
+        <h1>URL not found</h1>
+        <p>URL for <strong>{short_url}</strong> not found</p>
+        """
+        content = index_template.render(
+            title="URL not found", body=body, css=css
+        )
+        return HTMLResponse(content=content)
+
+
+@app.get("/{domain}/{subdomain}")
+async def redirect_subdomain(domain: str, subdomain: str):
+    short_url = f"{domain}/{subdomain}"
+    if domain in url_mappings:
+        return RedirectResponse(url=url_mappings[short_url][0]+f"/{subdomain}")
     else:
         body = f"""
         <h1>URL not found</h1>

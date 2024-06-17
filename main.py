@@ -72,7 +72,7 @@ async def redirect_domain(short_url: str):
 async def redirect_subdomain(domain: str, subdomain: str):
     short_url = f"{domain}/{subdomain}"
     if domain in url_mappings:
-        return RedirectResponse(url=url_mappings[short_url][0]+f"/{subdomain}")
+        return RedirectResponse(url=url_mappings[domain][0]+f"/{subdomain}")
     else:
         body = f"""
         <h1>URL not found</h1>
